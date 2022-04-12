@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/MainFragment">
+
+    <fragment
+        android:id="@+id/MainFragment"
+        android:name="com.alexeykov.weather.MainFragment"
+        android:label="@string/main_fragment_label"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_MainFragment_to_DetailsFragment"
+            app:destination="@id/DetailsFragment" />
+        <action
+            android:id="@+id/action_MainFragment_to_AddCityFragment"
+            app:destination="@id/AddCityFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/DetailsFragment"
+        android:name="com.alexeykov.weather.DetailsFragment"
+        android:label="@string/details_fragment_label"
+        tools:layout="@layout/fragment_details">
+        <action
+            android:id="@+id/action_DetailsFragment_pop"
+            app:popUpTo="@id/DetailsFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/AddCityFragment"
+        android:name="com.alexeykov.weather.AddCityFragment"
+        android:label="@string/add_city_fragment_label"
+        tools:layout="@layout/fragment_details">
+        <action
+            android:id="@+id/action_AddCityFragment_pop"
+            app:popUpTo="@id/AddCityFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>
