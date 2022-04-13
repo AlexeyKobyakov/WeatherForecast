@@ -1,3 +1,19 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="icon_margin">14dp</dimen>
+    <dimen name="smallest_margin">6dp</dimen>
+    <dimen name="small_margin">8dp</dimen>
+    <dimen name="standard_margin">16dp</dimen>
+    <dimen name="half_standard_margin">8dp</dimen>
+    <dimen name="large_margin">24dp</dimen>
+
+    <dimen name="item_margin">12dp</dimen>
+
+    <dimen name="button_text_size">16sp</dimen>
+    <dimen name="large_text_size">16sp</dimen>
+    <dimen name="xl_text_size">20sp</dimen>
+    <dimen name="xxl_text_size">32sp</dimen>
+
+    <dimen name="radius_text_input">8dp</dimen>
+    <dimen name="radius_card">8dp</dimen>
 </resources>

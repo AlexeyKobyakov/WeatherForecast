@@ -27,7 +27,8 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_MainFragment_to_DetailsFragment)
+            val bundle = Bundle().apply { putString("city", "Москва") }
+            findNavController().navigate(R.id.action_MainFragment_to_DetailsFragment, bundle)
         }
 
         binding.fab.setOnClickListener {

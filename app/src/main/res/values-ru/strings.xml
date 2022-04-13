@@ -1,0 +1,107 @@
+<resources>
+    <string name="app_name">Прогноз погоды</string>
+    <string name="action_settings">Настройки</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="main_fragment_label">Погода в городах</string>
+    <string name="details_fragment_label">Город</string>
+    <string name="add_city_fragment_label">Добавление города</string>
+    <string name="next">Далее</string>
+    <string name="add">Добавить</string>
+
+    <string name="desc_FAB">Плавающая кнопка</string>
+    <string name="desc_cloudiness">Облачность</string>
+
+    <string name="enter_city">Введите имя города</string>
+    <string name="enter_city_error">Город не найден</string>
+    <string name="lbl_favorites">Избранное</string>
+    <string name="lbl_other_cities">Остальные города</string>
+
+    <string name="lbl_add_favorite">Добавить в избраное</string>
+    <string name="lbl_delete">Удалить город</string>
+
+    <string name="lbl_temperature">Температура</string>
+    <string name="lbl_feels_like">Ощущается как</string>
+    <string name="lbl_forecast_3_days">Прогноз а 3 дня</string>
+    <string name="lbl_pressure">Давление</string>
+    <string name="lbl_humidity">Влажность</string>
+    <string name="lbl_wind">Ветер</string>
+    <string name="lbl_line_sign">Видимость</string>
+
+    <string name="wind_n">С</string>
+    <string name="wind_nne">ССВ</string>
+    <string name="wind_ne">СВ</string>
+    <string name="wind_ene">ВСВ</string>
+    <string name="wind_e">В</string>
+    <string name="wind_ese">ВЮВ</string>
+    <string name="wind_se">ЮВ</string>
+    <string name="wind_sse">ЮЮВ</string>
+    <string name="wind_s">Ю</string>
+    <string name="wind_ssw">ЮЮЗ</string>
+    <string name="wind_sw">ЮЗ</string>
+    <string name="wind_wsw">ЗЮЗ</string>
+    <string name="wind_w">З</string>
+    <string name="wind_wnw">ЗСЗ</string>
+    <string name="wind_nw">СЗ</string>
+    <string name="wind_nnw">ССЗ</string>
+
+    <string name="weather_condition_200">Гроза с небольшим дождем</string>
+    <string name="weather_condition_201">Гроза с дождем</string>
+    <string name="weather_condition_202">Гроза с сильным дождем</string>
+    <string name="weather_condition_210">Легкая гроза</string>
+    <string name="weather_condition_211">Гроза</string>
+    <string name="weather_condition_212">Сильная гроза</string>
+    <string name="weather_condition_221">Рваная гроза</string>
+    <string name="weather_condition_230">Гроза с мелкой моросью</string>
+    <string name="weather_condition_231">Гроза с моросью</string>
+    <string name="weather_condition_232">Гроза с сильным моросящим дождем</string>
+
+    <string name="weather_condition_300">Легкая морось</string>
+    <string name="weather_condition_301">Морось</string>
+    <string name="weather_condition_302">Морось сильной интенсивности</string>
+    <string name="weather_condition_310">Слабая интенсивность моросящего дождя</string>
+    <string name="weather_condition_311">Морось дождь</string>
+    <string name="weather_condition_312">Моросящий дождь сильной интенсивности</string>
+    <string name="weather_condition_313">Ливневый дождь и морось</string>
+    <string name="weather_condition_314">Сильный ливневый дождь и морось</string>
+    <string name="weather_condition_321">Дождь и морось</string>
+
+    <string name="weather_condition_500">Легкий дождь</string>
+    <string name="weather_condition_501">Умеренный дождь</string>
+    <string name="weather_condition_502">Сильный интенсивный дождь</string>
+    <string name="weather_condition_503">Очень сильный дождь</string>
+    <string name="weather_condition_504">Экстремальный дождь</string>
+    <string name="weather_condition_511">Ледяной дождь</string>
+    <string name="weather_condition_520">Слабый ливневый дождь</string>
+    <string name="weather_condition_521">Сильный дождь</string>
+    <string name="weather_condition_522">Сильный ливневый дождь</string>
+    <string name="weather_condition_531">Местами сильный дождь</string>
+
+    <string name="weather_condition_600">Слабый снегопад</string>
+    <string name="weather_condition_601">Снегопад</string>
+    <string name="weather_condition_602">Сильный снегопад</string>
+    <string name="weather_condition_611">Мокрый снег</string>
+    <string name="weather_condition_612">Слабый дождь с мокрым снегом</string>
+    <string name="weather_condition_613">Сильный снег с дождем</string>
+    <string name="weather_condition_615">Небольшой дождь со снегом</string>
+    <string name="weather_condition_616">Дождь со снегом</string>
+    <string name="weather_condition_620">Слабая метель</string>
+    <string name="weather_condition_621">Метель</string>
+    <string name="weather_condition_622">Сильная метель</string>
+
+    <string name="weather_condition_701">Туман</string>
+    <string name="weather_condition_711">Дым</string>
+    <string name="weather_condition_721">Haze</string>
+    <string name="weather_condition_731">Песчаные/пылевые вихри</string>
+    <string name="weather_condition_741">Дымка</string>
+    <string name="weather_condition_751">Песок</string>
+    <string name="weather_condition_761">Пыль</string>
+    <string name="weather_condition_762">Вулканический пепел</string>
+    <string name="weather_condition_771">Шквальный ветер</string>
+    <string name="weather_condition_781">Торнадо</string>
+
+    <string name="weather_condition_800">Чистое небо</string>
+    <string name="weather_condition_801">Малооблачно</string>
+    <string name="weather_condition_802">Перистые облака</string>
+    <string name="weather_condition_803">Временами пасмурно</string>
+    <string name="weather_condition_804">Пасмурно</string>
+</resources>

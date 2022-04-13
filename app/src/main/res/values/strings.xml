@@ -1,14 +1,105 @@
 <resources>
-    <string name="app_name">WeatherForecast</string>
+    <string name="app_name">Weather Forecast</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="main_fragment_label">Main Fragment</string>
-    <string name="details_fragment_label">Details Fragment</string>
-    <string name="add_city_fragment_label">Add city Fragment</string>
+    <string name="main_fragment_label">Weather in cities</string>
+    <string name="details_fragment_label">City</string>
+    <string name="add_city_fragment_label">Adding a city</string>
     <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="add">Add</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="description_FAB">Floating button</string>
+    <string name="desc_FAB">Floating button</string>
+    <string name="enter_city">Enter city name</string>
+    <string name="enter_city_error">City not found</string>
+    <string name="lbl_favorites">Favorites</string>
+    <string name="lbl_other_cities">Other cities</string>
+    <string name="lbl_add_favorite">Add to favorites</string>
+    <string name="lbl_delete">Delete city</string>
+    <string name="lbl_temperature">Temperature</string>
+    <string name="lbl_feels_like">Feels like</string>
+    <string name="lbl_forecast_3_days">Forecast for 3 days</string>
+    <string name="desc_cloudiness">Cloudiness</string>
+    <string name="lbl_pressure">Pressure</string>
+    <string name="lbl_humidity">Humidity</string>
+    <string name="lbl_wind">Wind</string>
+    <string name="lbl_line_sign">Line of sign</string>
+
+    <string name="wind_n">N</string>
+    <string name="wind_nne">NNE</string>
+    <string name="wind_ne">NE</string>
+    <string name="wind_ene">ENE</string>
+    <string name="wind_e">E</string>
+    <string name="wind_ese">ESE</string>
+    <string name="wind_se">SE</string>
+    <string name="wind_sse">SSE</string>
+    <string name="wind_s">S</string>
+    <string name="wind_ssw">SSW</string>
+    <string name="wind_sw">SW</string>
+    <string name="wind_wsw">WSW</string>
+    <string name="wind_w">W</string>
+    <string name="wind_wnw">WNW</string>
+    <string name="wind_nw">NW</string>
+    <string name="wind_nnw">NNW</string>
+    
+    <string name="weather_condition_200">Thunderstorm with light rain</string>
+    <string name="weather_condition_201">Thunderstorm with rain</string>
+    <string name="weather_condition_202">Thunderstorm with heavy rain</string>
+    <string name="weather_condition_210">Light thunderstorm</string>
+    <string name="weather_condition_211">Thunderstorm</string>
+    <string name="weather_condition_212">Heavy thunderstorm</string>
+    <string name="weather_condition_221">Ragged thunderstorm</string>
+    <string name="weather_condition_230">Thunderstorm with light drizzle</string>
+    <string name="weather_condition_231">Thunderstorm with drizzle</string>
+    <string name="weather_condition_232">Thunderstorm with heavy drizzle</string>
+
+    <string name="weather_condition_300">Light intensity drizzle</string>
+    <string name="weather_condition_301">Drizzle</string>
+    <string name="weather_condition_302">Heavy intensity drizzle</string>
+    <string name="weather_condition_310">Light intensity drizzle rain</string>
+    <string name="weather_condition_311">Drizzle rain</string>
+    <string name="weather_condition_312">Heavy intensity drizzle rain</string>
+    <string name="weather_condition_313">Shower rain and drizzle</string>
+    <string name="weather_condition_314">Heavy shower rain and drizzle</string>
+    <string name="weather_condition_321">Shower drizzle</string>
+
+    <string name="weather_condition_500">Light rain</string>
+    <string name="weather_condition_501">Moderate rain</string>
+    <string name="weather_condition_502">Heavy intensity rain</string>
+    <string name="weather_condition_503">Very heavy rain</string>
+    <string name="weather_condition_504">Extreme rain</string>
+    <string name="weather_condition_511">Freezing rain</string>
+    <string name="weather_condition_520">Light intensity shower rain</string>
+    <string name="weather_condition_521">Shower rain</string>
+    <string name="weather_condition_522">Heavy intensity shower rain</string>
+    <string name="weather_condition_531">Ragged shower rain</string>
+
+    <string name="weather_condition_600">Light snow</string>
+    <string name="weather_condition_601">Snow</string>
+    <string name="weather_condition_602">Heavy snow</string>
+    <string name="weather_condition_611">Sleet</string>
+    <string name="weather_condition_612">Light shower sleet</string>
+    <string name="weather_condition_613">Shower sleet</string>
+    <string name="weather_condition_615">Light rain and snow</string>
+    <string name="weather_condition_616">Rain and snow</string>
+    <string name="weather_condition_620">Light shower snow</string>
+    <string name="weather_condition_621">Shower snow</string>
+    <string name="weather_condition_622">Heavy shower snow</string>
+
+    <string name="weather_condition_701">Mist</string>
+    <string name="weather_condition_711">Smoke</string>
+    <string name="weather_condition_721">Haze</string>
+    <string name="weather_condition_731">Sand / dust whirls</string>
+    <string name="weather_condition_741">Fog</string>
+    <string name="weather_condition_751">Sand</string>
+    <string name="weather_condition_761">Dust</string>
+    <string name="weather_condition_762">Volcanic ash</string>
+    <string name="weather_condition_771">Squalls</string>
+    <string name="weather_condition_781">Tornado</string>
+
+    <string name="weather_condition_800">Clear sky</string>
+    <string name="weather_condition_801">Few clouds</string>
+    <string name="weather_condition_802">Scattered clouds</string>
+    <string name="weather_condition_803">Broken clouds</string>
+    <string name="weather_condition_804">Overcast clouds</string>
+
 </resources>

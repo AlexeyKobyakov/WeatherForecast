@@ -33,7 +33,7 @@
         android:id="@+id/AddCityFragment"
         android:name="com.alexeykov.weather.AddCityFragment"
         android:label="@string/add_city_fragment_label"
-        tools:layout="@layout/fragment_details">
+        tools:layout="@layout/fragment_add_city">
         <action
             android:id="@+id/action_AddCityFragment_pop"
             app:popUpTo="@id/AddCityFragment"
