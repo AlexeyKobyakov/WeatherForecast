@@ -6,7 +6,6 @@ data class CityWeather(
     val id: Long,
     val name: String,
     val coord: Coordinates,
-    val base: String,
     val visibility: Int,
     val weather: List<Weather>,
     val main: WeatherMain,
@@ -16,30 +15,33 @@ data class CityWeather(
         "+${(main.temp - 273.15f).roundToInt()} °C"
     else
         "${(main.temp - 273.15f).roundToInt()} °C"
+
     fun getTempFeels(): String = if (main.feels_like - 273.15f.roundToInt() > 0)
         " +${(main.feels_like - 273.15f).roundToInt()} °C. "
     else
         " ${(main.feels_like - 273.15f).roundToInt()} °C. "
-    fun getHumidity():String = "${main.humidity}%"
-    fun getWeatherId():String = weather[0].id
-    fun getWeatherIconId():String = weather[0].icon
-    fun getSign():String = "${visibility/1000f}"
+
+    fun getHumidity(): String = "${main.humidity}%"
+    fun getWeatherId(): String = weather[0].id
+    fun getWeatherIconId(): String = weather[0].icon
+    fun getSign(): String = "${visibility / 1000f}"
 }
 
 data class ForecastList(
-    val list: List<ForecastItem>
+    val list: List<ForecastItem>,
 )
 
 data class ForecastItem(
     val dt: Long,
     val main: WeatherMain,
-    val weather: List<Weather>
+    val weather: List<Weather>,
 ) {
     fun getTemp(): String = if (main.temp - 273.15f.roundToInt() > 0)
         "+${(main.temp - 273.15f).roundToInt()} °C"
     else
         "${(main.temp - 273.15f).roundToInt()} °C"
-    fun getWeatherIconId():String = weather[0].icon
+
+    fun getWeatherIconId(): String = weather[0].icon
 }
 
 data class Weather(
@@ -55,7 +57,7 @@ data class WeatherMain(
 )
 
 data class Wind(
-    val speed: String,
+    val speed: Float,
     val deg: Int,
 )
 
