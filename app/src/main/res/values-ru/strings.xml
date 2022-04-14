@@ -21,7 +21,7 @@
 
     <string name="lbl_temperature">Температура</string>
     <string name="lbl_feels_like">Ощущается как</string>
-    <string name="lbl_forecast_3_days">Прогноз а 3 дня</string>
+    <string name="lbl_forecast_3_days">Прогноз на 3 дня</string>
     <string name="lbl_pressure">Давление</string>
     <string name="lbl_humidity">Влажность</string>
     <string name="lbl_wind">Ветер</string>
@@ -102,6 +102,10 @@
     <string name="weather_condition_800">Чистое небо</string>
     <string name="weather_condition_801">Малооблачно</string>
     <string name="weather_condition_802">Перистые облака</string>
-    <string name="weather_condition_803">Временами пасмурно</string>
+    <string name="weather_condition_803">Переменная облачность</string>
     <string name="weather_condition_804">Пасмурно</string>
+
+    <string name="unit_distance">Км</string>
+    <string name="unit_pressure">кПа</string>
+    <string name="unit_speed">м/с</string>
 </resources>

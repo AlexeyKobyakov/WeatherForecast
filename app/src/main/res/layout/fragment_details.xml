@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".DetailsFragment">
+    tools:context=".ui.DetailsFragment">
 
     <TextView
         android:id="@+id/textview_second"
@@ -51,12 +51,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/lbl_feels_like"
+            android:layout_gravity="center"
             android:textSize="@dimen/large_text_size" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/temperature_feel"
+            android:id="@+id/temperature_feels"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:textSize="@dimen/large_text_size"
             tools:text=" +2 °C. " />
 

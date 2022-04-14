@@ -118,24 +118,24 @@
     </string-array>
 
     <string-array name="icons_map">
-        <item>01d|http://openweathermap.org/img/wn/01d@2x.png</item>
-        <item>01n|http://openweathermap.org/img/wn/01n@2x.png</item>
-        <item>02d|http://openweathermap.org/img/wn/02d@2x.png</item>
-        <item>02n|http://openweathermap.org/img/wn/02n@2x.png</item>
-        <item>03d|http://openweathermap.org/img/wn/03d@2x.png</item>
-        <item>03n|http://openweathermap.org/img/wn/03n@2x.png</item>
-        <item>04d|http://openweathermap.org/img/wn/04d@2x.png</item>
-        <item>04n|http://openweathermap.org/img/wn/04n@2x.png</item>
-        <item>09d|http://openweathermap.org/img/wn/09d@2x.png</item>
-        <item>09n|http://openweathermap.org/img/wn/09n@2x.png</item>
-        <item>10d|http://openweathermap.org/img/wn/10d@2x.png</item>
-        <item>10n|http://openweathermap.org/img/wn/10n@2x.png</item>
-        <item>11d|http://openweathermap.org/img/wn/11d@2x.png</item>
-        <item>11n|http://openweathermap.org/img/wn/11n@2x.png</item>
-        <item>13d|http://openweathermap.org/img/wn/13d@2x.png</item>
-        <item>13n|http://openweathermap.org/img/wn/13n@2x.png</item>
-        <item>50d|http://openweathermap.org/img/wn/50d@2x.png</item>
-        <item>50n|http://openweathermap.org/img/wn/50n@2x.png</item>
+        <item>01d|https://openweathermap.org/img/wn/01d@2x.png</item>
+        <item>01n|https://openweathermap.org/img/wn/01n@2x.png</item>
+        <item>02d|https://openweathermap.org/img/wn/02d@2x.png</item>
+        <item>02n|https://openweathermap.org/img/wn/02n@2x.png</item>
+        <item>03d|https://openweathermap.org/img/wn/03d@2x.png</item>
+        <item>03n|https://openweathermap.org/img/wn/03n@2x.png</item>
+        <item>04d|https://openweathermap.org/img/wn/04d@2x.png</item>
+        <item>04n|https://openweathermap.org/img/wn/04n@2x.png</item>
+        <item>09d|https://openweathermap.org/img/wn/09d@2x.png</item>
+        <item>09n|https://openweathermap.org/img/wn/09n@2x.png</item>
+        <item>10d|https://openweathermap.org/img/wn/10d@2x.png</item>
+        <item>10n|https://openweathermap.org/img/wn/10n@2x.png</item>
+        <item>11d|https://openweathermap.org/img/wn/11d@2x.png</item>
+        <item>11n|https://openweathermap.org/img/wn/11n@2x.png</item>
+        <item>13d|https://openweathermap.org/img/wn/13d@2x.png</item>
+        <item>13n|https://openweathermap.org/img/wn/13n@2x.png</item>
+        <item>50d|https://openweathermap.org/img/wn/50d@2x.png</item>
+        <item>50n|https://openweathermap.org/img/wn/50n@2x.png</item>
     </string-array>
 
     <string-array name="winds">

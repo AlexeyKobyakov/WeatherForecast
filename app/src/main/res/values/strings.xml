@@ -102,4 +102,8 @@
     <string name="weather_condition_803">Broken clouds</string>
     <string name="weather_condition_804">Overcast clouds</string>
 
+    <string name="unit_distance">Km</string>
+    <string name="unit_pressure">kPa</string>
+    <string name="unit_speed">m/s</string>
+
 </resources>

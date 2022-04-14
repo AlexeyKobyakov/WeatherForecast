@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/MainFragment"
-        android:name="com.alexeykov.weather.MainFragment"
+        android:name="com.alexeykov.weather.ui.MainFragment"
         android:label="@string/main_fragment_label"
         tools:layout="@layout/fragment_main">
         <action
@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/DetailsFragment"
-        android:name="com.alexeykov.weather.DetailsFragment"
+        android:name="com.alexeykov.weather.ui.DetailsFragment"
         android:label="@string/details_fragment_label"
         tools:layout="@layout/fragment_details">
         <action
@@ -31,7 +31,7 @@
 
     <fragment
         android:id="@+id/AddCityFragment"
-        android:name="com.alexeykov.weather.AddCityFragment"
+        android:name="com.alexeykov.weather.ui.AddCityFragment"
         android:label="@string/add_city_fragment_label"
         tools:layout="@layout/fragment_add_city">
         <action
