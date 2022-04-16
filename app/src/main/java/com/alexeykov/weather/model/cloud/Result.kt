@@ -1,4 +1,4 @@
-package com.alexeykov.weather.repository.cloud
+package com.alexeykov.weather.model.cloud
 
 import java.lang.Exception
 

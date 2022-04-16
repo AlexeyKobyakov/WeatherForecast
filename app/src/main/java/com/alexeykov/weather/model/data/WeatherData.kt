@@ -1,13 +1,13 @@
-package com.alexeykov.weather.repository
+package com.alexeykov.weather.model.data
 
 data class WeatherData(
-    val id: Long,
+    val id: Int,
     val cityName: String,
     val isFavorite: Boolean = false,
     val coordLat: String,
     val coordLon: String,
     val temperature: String,
-    val temp_feel: String,
+    val tempFeel: String,
     val pressure: Int,
     val humidity: String,
     val visibility: String,

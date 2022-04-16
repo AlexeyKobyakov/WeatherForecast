@@ -1,9 +1,9 @@
-package com.alexeykov.weather.repository
+package com.alexeykov.weather.model.data
 
 import kotlin.math.roundToInt
 
 data class CityWeather(
-    val id: Long,
+    val id: Int,
     val name: String,
     val coord: Coordinates,
     val visibility: Int,
@@ -25,6 +25,11 @@ data class CityWeather(
     fun getWeatherId(): String = weather[0].id
     fun getWeatherIconId(): String = weather[0].icon
     fun getSign(): String = "${visibility / 1000f}"
+
+    fun validate() {
+//          if (coord.lat.isNullOrBlank()) throw EmptyFi
+    }
+
 }
 
 data class ForecastList(

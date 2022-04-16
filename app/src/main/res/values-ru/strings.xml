@@ -108,4 +108,8 @@
     <string name="unit_distance">Км</string>
     <string name="unit_pressure">кПа</string>
     <string name="unit_speed">м/с</string>
+
+    <string name="error_already_exist">Город уже есть в базе даных</string>
+    <string name="error_load_data">Невозможно загрузить погоду для города</string>
+
 </resources>

@@ -1,7 +1,7 @@
-package com.alexeykov.weather.repository.cloud
+package com.alexeykov.weather.model.cloud
 
-import com.alexeykov.weather.repository.CityWeather
-import com.alexeykov.weather.repository.ForecastList
+import com.alexeykov.weather.model.data.CityWeather
+import com.alexeykov.weather.model.data.ForecastList
 
 class WeatherRepository(private val api : WeatherApi) : BaseRepository() {
 

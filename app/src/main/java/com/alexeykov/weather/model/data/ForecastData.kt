@@ -1,4 +1,4 @@
-package com.alexeykov.weather.repository
+package com.alexeykov.weather.model.data
 
 data class ForecastData(
     val date: String,

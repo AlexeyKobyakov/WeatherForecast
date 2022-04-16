@@ -117,7 +117,7 @@
         <item>804</item>
     </string-array>
 
-    <string-array name="icons_map">
+    <string-array name="icons_array">
         <item>01d|https://openweathermap.org/img/wn/01d@2x.png</item>
         <item>01n|https://openweathermap.org/img/wn/01n@2x.png</item>
         <item>02d|https://openweathermap.org/img/wn/02d@2x.png</item>

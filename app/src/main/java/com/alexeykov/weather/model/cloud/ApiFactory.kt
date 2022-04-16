@@ -1,4 +1,4 @@
-package com.alexeykov.weather.repository.cloud
+package com.alexeykov.weather.model.cloud
 
 import com.alexeykov.weather.BuildConfig
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory

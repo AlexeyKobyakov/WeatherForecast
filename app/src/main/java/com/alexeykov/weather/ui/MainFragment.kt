@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.alexeykov.weather.R
 import com.alexeykov.weather.databinding.FragmentMainBinding
 import com.alexeykov.weather.viewmodels.MainViewModel
 
