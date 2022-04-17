@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.alexeykov.weather.model.data.CloudToLocalData
 import com.alexeykov.weather.R
+import com.alexeykov.weather.model.StorageException
 import com.alexeykov.weather.model.cloud.WeatherRepository
 import com.alexeykov.weather.model.room.CitiesRepository
 import kotlinx.coroutines.CoroutineScope
@@ -21,35 +22,33 @@ class AddCityViewModel(
 
     private val job: CoroutineScope = CoroutineScope(Dispatchers.IO)
 
-    private var isLoading: Boolean = false
-
     private var _errors: MutableLiveData<Int> = MutableLiveData<Int>()
     var errors: LiveData<Int> = _errors
 
-
     fun addCity(name: String) {
-        if (!isLoading)
-            job.launch {
-                isLoading = true
-                val weatherData = localRepository.getCity(name)
-                weatherData?.let {
-                    Log.d("AddCityViewModel", it.toString())
-                    _errors.postValue(R.string.error_already_exist)
-                } ?: saveCity(name)
-                isLoading = false
+        job.launch {
+            try {
+                saveCity(name)
+            } catch (e: StorageException) {
+                _errors.postValue(R.string.error_already_exist)
             }
+        }
     }
 
     private suspend fun saveCity(name: String) {
-        val cityWeather = cloudRepository.getWeatherInCity(name)
-        Log.d("AddCityViewModel", cityWeather.toString())
-        cityWeather?.let {
-            localRepository.addCity(weatherData = CloudToLocalData.getWeatherData(name, it))
-            Log.d("AddCityViewModel", it.toString())
-            CoroutineScope(Dispatchers.Main).launch {
-                navController.navigate(R.id.action_AddCityFragment_pop)
-            }
-        } ?: _errors.postValue(R.string.error_load_data)
+        try {
+            val cityWeather = cloudRepository.getWeatherInCity(name)
+            Log.d("AddCityViewModel", cityWeather.toString())
+            cityWeather?.let {
+                localRepository.addCity(weatherData = CloudToLocalData.getWeatherData(name, it))
+                Log.d("AddCityViewModel", it.toString())
+                CoroutineScope(Dispatchers.Main).launch {
+                    navController.navigate(R.id.action_AddCityFragment_pop)
+                }
+            } ?: _errors.postValue(R.string.error_load_data)
+        } catch (e: Exception) {
+            _errors.postValue(R.string.error_no_internet)
+        }
     }
 
 }

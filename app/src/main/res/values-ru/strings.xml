@@ -111,5 +111,6 @@
 
     <string name="error_already_exist">Город уже есть в базе даных</string>
     <string name="error_load_data">Невозможно загрузить погоду для города</string>
+    <string name="error_no_internet">Невозможно соединиться с сервером погоды</string>
 
 </resources>

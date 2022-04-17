@@ -108,5 +108,6 @@
 
     <string name="error_already_exist">City already exist</string>
     <string name="error_load_data">Can\'t load weather from city</string>
+    <string name="error_no_internet">Could\'t to connect to weather server</string>
 
 </resources>

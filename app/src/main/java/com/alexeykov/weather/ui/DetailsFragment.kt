@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.alexeykov.weather.R
@@ -40,6 +41,10 @@ class DetailsFragment : Fragment() {
             detailsViewModel.getWeather(it)
         }
 
+        observeWeather()
+    }
+
+    private fun observeWeather() {
         detailsViewModel.day1Data.observe(requireActivity()) {
             with(binding) {
                 date1.text = it.date
@@ -87,6 +92,12 @@ class DetailsFragment : Fragment() {
                         "(${detailsViewModel.getWindDirection(weatherData.windDeg)})"
                 wind.text = windText
             }
+        }
+
+        detailsViewModel.errors.observe(requireActivity()) {
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+            binding.threeDaysLayout.visibility = View.GONE
+            binding.threeDaysTextView.visibility = View.GONE
         }
     }
 

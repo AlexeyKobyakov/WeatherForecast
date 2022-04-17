@@ -3,15 +3,17 @@ package com.alexeykov.weather.model.room.cities
 import com.alexeykov.weather.model.data.WeatherData
 import com.alexeykov.weather.model.data.WeatherShortData
 import com.alexeykov.weather.model.room.CitiesRepository
+import com.alexeykov.weather.model.room.wrapSQLiteException
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 class RoomCitiesRepository(
     private val citiesDao: CitiesDao,
-//    private val ioDispatcher: CoroutineDispatcher,
+    private val ioDispatcher: CoroutineDispatcher,
 ): CitiesRepository {
 
-    override suspend fun addCity(weatherData: WeatherData) {
+    override suspend fun addCity(weatherData: WeatherData) = wrapSQLiteException(ioDispatcher) {
         val entity = CitiesDbEntity.fromWeatherData(weatherData)
         citiesDao.addCity(entity)
     }

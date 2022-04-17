@@ -7,6 +7,8 @@ import com.alexeykov.weather.model.cloud.WeatherRepository
 import com.alexeykov.weather.model.room.AppDatabase
 import com.alexeykov.weather.model.room.CitiesRepository
 import com.alexeykov.weather.model.room.cities.RoomCitiesRepository
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import java.util.LinkedHashMap
 
 object Repositories {
@@ -21,13 +23,14 @@ object Repositories {
         Room.databaseBuilder(appContext, AppDatabase::class.java, "database.db").build()
     }
 
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+
     val localRepository: CitiesRepository by lazy {
-        RoomCitiesRepository(database.getCitiesDao())
+        RoomCitiesRepository(citiesDao = database.getCitiesDao(), ioDispatcher = ioDispatcher)
     }
 
-    val cloudRepository: WeatherRepository = WeatherRepository(ApiFactory.weatherApi)
-
-//    val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+    val cloudRepository: WeatherRepository =
+        WeatherRepository(api = ApiFactory.weatherApi, ioDispatcher = ioDispatcher)
 
     val weather: LinkedHashMap<String, String> by lazy {
         getWeatherMap()

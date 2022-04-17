@@ -74,6 +74,7 @@
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/three_days_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -83,6 +84,7 @@
         android:textSize="@dimen/large_text_size" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/three_days_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
