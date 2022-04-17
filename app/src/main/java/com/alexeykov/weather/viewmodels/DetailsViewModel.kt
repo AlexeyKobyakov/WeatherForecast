@@ -47,9 +47,12 @@ class DetailsViewModel(
             try {
                 val response = cloudRepository.getWeatherInCity(cityName)
                 response?.let { cityWeather ->
-                    _weatherData.postValue(CloudToLocalData.getWeatherData(cityName, cityWeather))
-                    localRepository.updateWeather(CloudToLocalData.getWeatherData(cityName,
-                        cityWeather))
+                    val weather = CloudToLocalData.getWeatherData(
+                        cityId = localRepository.getCityId(cityName),
+                        cityName = cityName,
+                        cityWeather = cityWeather)
+                    _weatherData.postValue(weather)
+                    localRepository.updateWeather(weather)
                     val forecast =
                         cloudRepository.getForecast(response.coord.lat, response.coord.lon)
                     forecast?.let {

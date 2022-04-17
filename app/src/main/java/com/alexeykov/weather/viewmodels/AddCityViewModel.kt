@@ -36,12 +36,15 @@ class AddCityViewModel(
         }
     }
 
-    private suspend fun saveCity(name: String) {
+    private suspend fun saveCity(cityName: String) {
         try {
-            val cityWeather = cloudRepository.getWeatherInCity(name)
+            val cityWeather = cloudRepository.getWeatherInCity(cityName)
             Log.d("AddCityViewModel", cityWeather.toString())
             cityWeather?.let {
-                localRepository.addCity(weatherData = CloudToLocalData.getWeatherData(name, it))
+                localRepository.addCity(weatherData = CloudToLocalData.getWeatherData(
+                    cityId = 0,
+                    cityName = cityName,
+                    cityWeather = it))
                 Log.d("AddCityViewModel", it.toString())
                 CoroutineScope(Dispatchers.Main).launch {
                     navController.navigate(R.id.action_AddCityFragment_pop)

@@ -16,7 +16,9 @@ interface CitiesRepository {
 
     suspend fun getShortData(): Flow<List<WeatherShortData>>
 
-    suspend fun getCity(name: String): WeatherData?
+    suspend fun getCity(cityName: String): WeatherData?
+
+    suspend fun getCityId(cityName: String): Int
 
     suspend fun updateWeather(weatherData: WeatherData)
 
