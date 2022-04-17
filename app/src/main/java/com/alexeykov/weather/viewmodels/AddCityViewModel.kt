@@ -21,18 +21,23 @@ class AddCityViewModel(
 
     private val job: CoroutineScope = CoroutineScope(Dispatchers.IO)
 
+    private var isLoading: Boolean = false
+
     private var _errors: MutableLiveData<Int> = MutableLiveData<Int>()
     var errors: LiveData<Int> = _errors
 
 
     fun addCity(name: String) {
-        job.launch {
-            val weatherData = localRepository.getCity(name)
-            weatherData?.let {
-                Log.d("AddCityViewModel", it.toString())
-                _errors.postValue(R.string.error_already_exist)
-            } ?: saveCity(name)
-        }
+        if (!isLoading)
+            job.launch {
+                isLoading = true
+                val weatherData = localRepository.getCity(name)
+                weatherData?.let {
+                    Log.d("AddCityViewModel", it.toString())
+                    _errors.postValue(R.string.error_already_exist)
+                } ?: saveCity(name)
+                isLoading = false
+            }
     }
 
     private suspend fun saveCity(name: String) {

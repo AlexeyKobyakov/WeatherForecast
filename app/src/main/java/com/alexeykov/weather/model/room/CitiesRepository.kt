@@ -8,7 +8,9 @@ interface CitiesRepository {
 
     suspend fun addCity(weatherData: WeatherData)
 
-    fun deleteCity(id: Int)
+    suspend fun deleteCity(cityName: String)
+
+    suspend fun changeFavorite(cityName: String, isFavorite: Int)
 
     suspend fun getAllData(): Flow<List<WeatherData>>
 

@@ -16,8 +16,12 @@ class RoomCitiesRepository(
         citiesDao.addCity(entity)
     }
 
-    override fun deleteCity(id: Int) {
-        citiesDao.deleteCity(id)
+    override suspend fun deleteCity(cityName: String) {
+        citiesDao.deleteCity(cityName)
+    }
+
+    override suspend fun changeFavorite(cityName: String, isFavorite: Int) {
+        citiesDao.changeFavorite(cityName, isFavorite)
     }
 
     override suspend fun getAllData(): Flow<List<WeatherData>> {

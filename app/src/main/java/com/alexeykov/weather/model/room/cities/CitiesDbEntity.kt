@@ -15,7 +15,7 @@ import com.alexeykov.weather.model.data.WeatherData
 data class CitiesDbEntity(
     @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = true) val id: Int,
     @ColumnInfo(name = "city_name") val cityName: String,
-    @ColumnInfo(name = "is_favorite") val isFavorite: Boolean = false,
+    @ColumnInfo(name = "is_favorite") val isFavorite: Int,
     @ColumnInfo(name = "coordinate_lat") val coordLat: String,
     @ColumnInfo(name = "coordinates_lon") val coordLon: String,
     @ColumnInfo(name = "temperature") val temperature: String,

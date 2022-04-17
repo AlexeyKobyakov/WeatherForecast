@@ -59,10 +59,19 @@
                     android:id="@+id/city_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:maxLines="1"
                     android:layout_weight="1"
                     android:textColor="@color/colorTextPrimary"
                     android:textSize="@dimen/xxl_text_size"
-                    tools:text="Москва" />
+                    tools:text="CityName" />
+
+                <ImageView
+                    android:id="@+id/weather_icon"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    tools:ignore="ContentDescription" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/temperature"
@@ -86,20 +95,21 @@
 
                 <ImageView
                     android:id="@+id/icon_favorite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:src="@drawable/ic_favorite_not"
                     android:contentDescription="@string/lbl_add_favorite"/>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:layout_gravity="center"/>
 
                 <ImageView
                     android:id="@+id/icon_delete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:src="@drawable/ic_delete"
                     android:contentDescription="@string/lbl_delete"/>
             </LinearLayout>

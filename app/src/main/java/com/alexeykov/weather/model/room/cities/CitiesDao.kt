@@ -12,15 +12,18 @@ interface CitiesDao {
     @Update(entity = CitiesDbEntity::class)
     suspend fun updateCity(citiesDbEntity: CitiesDbEntity)
 
-    @Query("DELETE FROM cities WHERE id = :id")
-    fun deleteCity(id: Int)
+    @Query("DELETE FROM cities WHERE city_name = :name")
+    suspend fun deleteCity(name: String)
 
-    @Query("SELECT * FROM cities WHERE city_name = :name ORDER BY is_favorite")
+    @Query("UPDATE cities SET is_favorite = :isFavorite WHERE city_name = :cityName")
+    suspend fun changeFavorite(cityName: String, isFavorite: Int)
+
+    @Query("SELECT * FROM cities WHERE city_name = :name")
     suspend fun getCityWeather (name: String): CitiesDbEntity?
 
-    @Query("SELECT id, city_name, temperature, icon_link FROM cities ORDER BY is_favorite")
+    @Query("SELECT id, city_name, is_favorite, RTRIM(temperature, ' °C') as temperature, icon_link FROM cities ORDER BY is_favorite DESC, id")
     fun getAllCityWeatherShort (): Flow<List<CityShortTuple>>
 
-    @Query("SELECT * FROM cities ORDER BY is_favorite")
+    @Query("SELECT * FROM cities ORDER BY is_favorite DESC, id")
     fun getAllCityWeather (): Flow<List<CitiesDbEntity>>
 }
