@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.alexeykov.weather.model.data.CloudToLocalData
 import com.alexeykov.weather.R
+import com.alexeykov.weather.model.NoNetworkConnection
 import com.alexeykov.weather.model.StorageException
 import com.alexeykov.weather.model.cloud.WeatherRepository
 import com.alexeykov.weather.model.room.CitiesRepository
@@ -46,7 +47,7 @@ class AddCityViewModel(
                     navController.navigate(R.id.action_AddCityFragment_pop)
                 }
             } ?: _errors.postValue(R.string.error_load_data)
-        } catch (e: Exception) {
+        } catch (e: NoNetworkConnection) {
             _errors.postValue(R.string.error_no_internet)
         }
     }
