@@ -25,6 +25,9 @@ class MainViewModel(
     private var _items: MutableLiveData<List<WeatherShortData>> = MutableLiveData()
     var items: LiveData<List<WeatherShortData>> = _items
 
+    private var _delete: MutableLiveData<String> = MutableLiveData("")
+    var delete: LiveData<String> = _delete
+
     private val job = CoroutineScope(Dispatchers.IO)
 
     init {
@@ -49,8 +52,13 @@ class MainViewModel(
     }
 
     override fun onDeleteClicked(cityName: String) {
+        _delete.postValue(cityName)
+    }
+
+    fun deleteCity(cityName: String) {
         job.launch {
             localRepository.deleteCity(cityName)
+            _delete.postValue("")
         }
     }
 
@@ -59,5 +67,9 @@ class MainViewModel(
             val isFavorite = if (item.isFavorite == 0) 1 else 0
             localRepository.changeFavorite(item.cityName, isFavorite)
         }
+    }
+
+    fun clearDelete() {
+        _delete.postValue("")
     }
 }

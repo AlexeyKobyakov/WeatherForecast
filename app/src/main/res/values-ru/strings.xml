@@ -113,4 +113,6 @@
     <string name="error_load_data">Невозможно загрузить погоду для города</string>
     <string name="error_no_internet">Невозможно соединиться с сервером погоды</string>
 
+    <string name="dialog_delete">Действительно удалить город?</string>
+
 </resources>
