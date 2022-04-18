@@ -4,11 +4,11 @@ import com.alexeykov.weather.Repositories
 
 object CloudToLocalData {
 
-    fun getWeatherData(cityId: Int, cityName: String, cityWeather: CityWeather): WeatherData {
+    fun getWeatherData(cityId: Int, cityName: String, isFavorite: Int, cityWeather: CityWeather): WeatherData {
         return WeatherData(
             id = cityId,
             cityName = cityName,
-            isFavorite = 0,
+            isFavorite = isFavorite,
             coordLat = cityWeather.coord.lat,
             coordLon = cityWeather.coord.lon,
             temperature = cityWeather.getTemp(),

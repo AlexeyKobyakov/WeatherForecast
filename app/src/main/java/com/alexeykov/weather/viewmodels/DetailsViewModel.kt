@@ -50,6 +50,7 @@ class DetailsViewModel(
                     val weather = CloudToLocalData.getWeatherData(
                         cityId = localRepository.getCityId(cityName),
                         cityName = cityName,
+                        isFavorite = localRepository.getCityFavorite(cityName),
                         cityWeather = cityWeather)
                     _weatherData.postValue(weather)
                     localRepository.updateWeather(weather)

@@ -55,6 +55,13 @@ class RoomCitiesRepository(
         } ?: return 0
     }
 
+    override suspend fun getCityFavorite(cityName: String): Int {
+        val id = citiesDao.getCityFavorite(cityName)
+        id?.let {
+            return it
+        } ?: return 0
+    }
+
     override suspend fun updateWeather(weatherData: WeatherData) {
         citiesDao.updateCity(CitiesDbEntity.fromWeatherData(weatherData))
         Log.d("UpdateCity", weatherData.toString())

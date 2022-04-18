@@ -44,6 +44,7 @@ class AddCityViewModel(
                 localRepository.addCity(weatherData = CloudToLocalData.getWeatherData(
                     cityId = 0,
                     cityName = cityName,
+                    isFavorite = 0,
                     cityWeather = it))
                 Log.d("AddCityViewModel", it.toString())
                 CoroutineScope(Dispatchers.Main).launch {
