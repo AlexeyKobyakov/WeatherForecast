@@ -15,6 +15,7 @@ class CityListAdapter(
 ) : RecyclerView.Adapter<CityListAdapter.Holder>(), View.OnClickListener {
 
     private var items: List<WeatherShortData> = emptyList()
+    private var lastFavoritePosition: Int? = null
 
     interface Listener {
         fun onItemClicked(cityName: String)
@@ -58,8 +59,9 @@ class CityListAdapter(
 
             iconFavorite.setOnClickListener {
                 listener.onFavoriteClicked(item)
+                lastFavoritePosition = holder.adapterPosition
             }
-/*            if (position == 0 && item.isFavorite != 0)
+            if (position == 0 && item.isFavorite != 0)
                 textFavorites.visibility = View.VISIBLE
             else
                 textFavorites.visibility = View.GONE
@@ -68,7 +70,7 @@ class CityListAdapter(
                 if (item.isFavorite == 0 && items[position - 1].isFavorite != 0)
                     textOtherCities.visibility = View.VISIBLE
                 else
-                    textOtherCities.visibility = View.GONE*/
+                    textOtherCities.visibility = View.GONE
         }
     }
 
@@ -79,6 +81,13 @@ class CityListAdapter(
         val result = DiffUtil.calculateDiff(diffUtilCallBack)
         this.items = items
         result.dispatchUpdatesTo(this)
+
+        //Need to add smarter logic
+        lastFavoritePosition?.let {
+            if (it < items.size - 1)
+                notifyItemRangeChanged(0, items.size)
+            lastFavoritePosition = null
+        }
     }
 
     class Holder(val binding: ItemCityBinding) : RecyclerView.ViewHolder(binding.root)
