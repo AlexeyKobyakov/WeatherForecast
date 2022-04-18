@@ -9,6 +9,7 @@ import com.alexeykov.weather.R
 import com.alexeykov.weather.model.data.CloudToLocalData
 import com.alexeykov.weather.Repositories
 import com.alexeykov.weather.model.NoNetworkConnection
+import com.alexeykov.weather.model.StorageException
 import com.alexeykov.weather.model.data.WeatherData
 import com.alexeykov.weather.model.data.ForecastData
 import com.alexeykov.weather.model.cloud.WeatherRepository
@@ -45,12 +46,13 @@ class DetailsViewModel(
     fun getWeather(cityName: String) {
         job.launch {
             try {
+                val city = localRepository.getCity(cityName)
                 val response = cloudRepository.getWeatherInCity(cityName)
                 response?.let { cityWeather ->
                     val weather = CloudToLocalData.getWeatherData(
-                        cityId = localRepository.getCityId(cityName),
+                        cityId = city?.id ?: 0,
                         cityName = cityName,
-                        isFavorite = localRepository.getCityFavorite(cityName),
+                        isFavorite = city?.isFavorite ?: 0,
                         cityWeather = cityWeather)
                     _weatherData.postValue(weather)
                     localRepository.updateWeather(weather)
@@ -90,6 +92,9 @@ class DetailsViewModel(
                 e.printStackTrace()
                 _errors.postValue(R.string.error_no_internet)
                 getLocalWeather(cityName)
+            } catch (e: StorageException) {
+                e.printStackTrace()
+                _errors.postValue(R.string.error_load_data)
             }
         }
     }

@@ -18,10 +18,6 @@ interface CitiesRepository {
 
     suspend fun getCity(cityName: String): WeatherData?
 
-    suspend fun getCityId(cityName: String): Int
-
-    suspend fun getCityFavorite(cityName: String): Int
-
     suspend fun updateWeather(weatherData: WeatherData)
 
 }

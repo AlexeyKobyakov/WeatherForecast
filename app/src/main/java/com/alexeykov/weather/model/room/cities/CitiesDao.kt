@@ -12,12 +12,6 @@ interface CitiesDao {
     @Update(entity = CitiesDbEntity::class)
     suspend fun updateCity(citiesDbEntity: CitiesDbEntity)
 
-    @Query("SELECT id FROM cities WHERE city_name = :cityName")
-    suspend fun getCityId(cityName: String): Int?
-
-    @Query("SELECT is_favorite FROM cities WHERE city_name = :cityName")
-    suspend fun getCityFavorite(cityName: String): Int?
-
     @Query("DELETE FROM cities WHERE city_name = :name")
     suspend fun deleteCity(name: String)
 
