@@ -27,19 +27,25 @@ class RoomCitiesRepository(
         citiesDao.changeFavorite(cityName, isFavorite)
     }
 
-    override suspend fun getAllData(): Flow<List<WeatherData>> {
-        return citiesDao.getAllCityWeather().map {
+    override suspend fun getAllDataFlow(): Flow<List<WeatherData>> {
+        return citiesDao.getAllCityWeatherFlow().map {
             it.map { citiesDbEntity ->
                 citiesDbEntity.toWeatherData()
             }
         }
     }
 
-    override suspend fun getShortData(): Flow<List<WeatherShortData>> {
-        return citiesDao.getAllCityWeatherShort().map {
+    override suspend fun getShortDataFlow(): Flow<List<WeatherShortData>> {
+        return citiesDao.getAllCityWeatherShortFlow().map {
             it.map { cityShortTuple ->
                 cityShortTuple.toWeatherShortData()
             }
+        }
+    }
+
+    override suspend fun getShortData(): List<WeatherShortData> {
+        return citiesDao.getAllCityWeatherShort().map { cityShortTuple ->
+            cityShortTuple.toWeatherShortData()
         }
     }
 

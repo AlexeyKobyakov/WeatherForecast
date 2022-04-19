@@ -19,11 +19,15 @@ interface CitiesDao {
     suspend fun changeFavorite(cityName: String, isFavorite: Int)
 
     @Query("SELECT * FROM cities WHERE city_name = :name")
-    suspend fun getCityWeather (name: String): CitiesDbEntity?
+    suspend fun getCityWeather(name: String): CitiesDbEntity?
 
     @Query("SELECT id, city_name, is_favorite, RTRIM(temperature, ' °C') as temperature, icon_link FROM cities ORDER BY is_favorite DESC, id")
-    fun getAllCityWeatherShort (): Flow<List<CityShortTuple>>
+    fun getAllCityWeatherShortFlow(): Flow<List<CityShortTuple>>
+
+    @Query("SELECT id, city_name, is_favorite, RTRIM(temperature, ' °C') as temperature, icon_link FROM cities ORDER BY is_favorite DESC, id")
+    suspend fun getAllCityWeatherShort(): List<CityShortTuple>
 
     @Query("SELECT * FROM cities ORDER BY is_favorite DESC, id")
-    fun getAllCityWeather (): Flow<List<CitiesDbEntity>>
+    fun getAllCityWeatherFlow(): Flow<List<CitiesDbEntity>>
+
 }

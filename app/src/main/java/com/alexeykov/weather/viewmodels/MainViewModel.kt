@@ -7,7 +7,9 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.alexeykov.weather.R
 import com.alexeykov.weather.adapters.CityListAdapter
+import com.alexeykov.weather.model.NoNetworkConnection
 import com.alexeykov.weather.model.cloud.WeatherRepository
+import com.alexeykov.weather.model.data.CloudToLocalData
 import com.alexeykov.weather.model.data.WeatherShortData
 import com.alexeykov.weather.model.room.CitiesRepository
 import kotlinx.coroutines.CoroutineScope
@@ -28,15 +30,41 @@ class MainViewModel(
     private var _delete: MutableLiveData<String> = MutableLiveData("")
     var delete: LiveData<String> = _delete
 
+    private var _errors: MutableLiveData<Int> = MutableLiveData<Int>()
+    var errors: LiveData<Int> = _errors
+
     private val job = CoroutineScope(Dispatchers.IO)
 
     init {
         getWeatherInCities()
+        getForecast()
+    }
+
+    private fun getForecast() {
+        job.launch {
+            val citiesList = localRepository.getShortData()
+            citiesList.forEach { weatherShortData ->
+                try {
+                    val forecast = cloudRepository.getWeatherInCity(weatherShortData.cityName)
+                    forecast?.let {
+                        val weather = CloudToLocalData.getWeatherData(
+                            cityId = weatherShortData.id,
+                            cityName = weatherShortData.cityName,
+                            isFavorite = weatherShortData.isFavorite,
+                            cityWeather = it
+                        )
+                        localRepository.updateWeather(weather)
+                    }
+                } catch (e: NoNetworkConnection) {
+                    _errors.postValue(R.string.error_no_internet)
+                }
+            }
+        }
     }
 
     private fun getWeatherInCities() {
         job.launch {
-            localRepository.getShortData().collect {
+            localRepository.getShortDataFlow().collect {
                 _items.postValue(it)
             }
         }

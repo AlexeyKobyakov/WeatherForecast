@@ -12,9 +12,11 @@ interface CitiesRepository {
 
     suspend fun changeFavorite(cityName: String, isFavorite: Int)
 
-    suspend fun getAllData(): Flow<List<WeatherData>>
+    suspend fun getAllDataFlow(): Flow<List<WeatherData>>
 
-    suspend fun getShortData(): Flow<List<WeatherShortData>>
+    suspend fun getShortDataFlow(): Flow<List<WeatherShortData>>
+
+    suspend fun getShortData(): List<WeatherShortData>
 
     suspend fun getCity(cityName: String): WeatherData?
 
