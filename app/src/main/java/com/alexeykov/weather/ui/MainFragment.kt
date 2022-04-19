@@ -52,6 +52,10 @@ class MainFragment : Fragment() {
             mainViewModel.navigateToAddCity()
         }
 
+        binding.pullToRefresh.setOnRefreshListener {
+            mainViewModel.getForecast()
+        }
+
         observeCities()
     }
 
@@ -77,6 +81,11 @@ class MainFragment : Fragment() {
 
         mainViewModel.errors.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+            binding.pullToRefresh.isRefreshing = false
+        }
+
+        mainViewModel.update.observe(viewLifecycleOwner) {
+            binding.pullToRefresh.isRefreshing = false
         }
     }
 

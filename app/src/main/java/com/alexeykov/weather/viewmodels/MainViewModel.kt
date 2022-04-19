@@ -33,6 +33,9 @@ class MainViewModel(
     private var _errors: MutableLiveData<Int> = MutableLiveData<Int>()
     var errors: LiveData<Int> = _errors
 
+    private var _update: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
+    var update: LiveData<Boolean> = _update
+
     private val job = CoroutineScope(Dispatchers.IO)
 
     init {
@@ -40,7 +43,8 @@ class MainViewModel(
         getForecast()
     }
 
-    private fun getForecast() {
+    fun getForecast() {
+        _update.postValue(true)
         job.launch {
             val citiesList = localRepository.getShortData()
             citiesList.forEach { weatherShortData ->
@@ -59,6 +63,7 @@ class MainViewModel(
                     _errors.postValue(R.string.error_no_internet)
                 }
             }
+            _update.postValue(false)
         }
     }
 

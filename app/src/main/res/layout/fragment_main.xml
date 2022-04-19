@@ -6,11 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/CitiesRecyclerView"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/pull_to_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/item_city"/>
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/CitiesRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_city" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -19,13 +25,13 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
+        android:contentDescription="@string/desc_FAB"
         app:backgroundTint="?attr/colorPrimary"
         app:backgroundTintMode="src_in"
-        app:tint="@android:color/white"
-        app:srcCompat="@drawable/ic_add"
-        android:contentDescription="@string/desc_FAB"
         app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_add"
+        app:tint="@android:color/white" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
