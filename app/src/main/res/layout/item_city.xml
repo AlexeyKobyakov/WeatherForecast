@@ -98,6 +98,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_favorite_not"
+                    app:tint="@color/colorPrimary"
                     android:contentDescription="@string/lbl_add_favorite"/>
 
                 <TextView
@@ -111,6 +112,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_delete"
+                    app:tint="@color/colorPrimary"
                     android:contentDescription="@string/lbl_delete"/>
             </LinearLayout>
         </LinearLayout>

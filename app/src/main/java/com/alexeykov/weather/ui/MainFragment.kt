@@ -24,8 +24,7 @@ class MainFragment : Fragment() {
     private val mainViewModel: MainViewModel by viewModelCreator {
         MainViewModel(
             Repositories.localRepository,
-            Repositories.cloudRepository,
-            findNavController()
+            Repositories.cloudRepository
         )
     }
 
@@ -55,6 +54,8 @@ class MainFragment : Fragment() {
         binding.pullToRefresh.setOnRefreshListener {
             mainViewModel.getForecast()
         }
+
+        mainViewModel.setNavController(findNavController())
 
         observeCities()
     }

@@ -20,9 +20,10 @@ import kotlinx.coroutines.launch
 class MainViewModel(
     private val localRepository: CitiesRepository,
     private val cloudRepository: WeatherRepository,
-    private val navController: NavController,
 ) : ViewModel(), CityListAdapter.Listener {
 
+
+    private var navController: NavController? = null
 
     private var _items: MutableLiveData<List<WeatherShortData>> = MutableLiveData()
     var items: LiveData<List<WeatherShortData>> = _items
@@ -41,6 +42,10 @@ class MainViewModel(
     init {
         getWeatherInCities()
         getForecast()
+    }
+
+    fun setNavController(navController: NavController) {
+        this.navController = navController
     }
 
     fun getForecast() {
@@ -76,12 +81,12 @@ class MainViewModel(
     }
 
     fun navigateToAddCity() {
-        navController.navigate(R.id.action_MainFragment_to_AddCityFragment)
+        navController?.navigate(R.id.action_MainFragment_to_AddCityFragment)
     }
 
     override fun onItemClicked(cityName: String) {
         val bundle = Bundle().apply { putString("city", cityName) }
-        navController.navigate(R.id.action_MainFragment_to_DetailsFragment, bundle)
+        navController?.navigate(R.id.action_MainFragment_to_DetailsFragment, bundle)
     }
 
     override fun onDeleteClicked(cityName: String) {
