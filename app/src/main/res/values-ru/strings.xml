@@ -5,7 +5,6 @@
     <string name="main_fragment_label">Погода в городах</string>
     <string name="details_fragment_label">Город</string>
     <string name="add_city_fragment_label">Добавление города</string>
-    <string name="next">Далее</string>
     <string name="add">Добавить</string>
 
     <string name="desc_FAB">Плавающая кнопка</string>

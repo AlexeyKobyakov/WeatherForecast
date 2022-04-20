@@ -26,10 +26,6 @@ data class CityWeather(
     fun getWeatherIconId(): String = weather[0].icon
     fun getSign(): String = "${visibility / 1000f}"
 
-    fun validate() {
-//          if (coord.lat.isNullOrBlank()) throw EmptyFi
-    }
-
 }
 
 data class ForecastList(
