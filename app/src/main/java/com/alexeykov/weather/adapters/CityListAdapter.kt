@@ -16,6 +16,7 @@ class CityListAdapter(
 
     private var items: List<WeatherShortData> = emptyList()
     private var lastFavoritePosition: Int? = null
+    private var lastFavoriteId: Int? = null
 
     interface Listener {
         fun onItemClicked(cityName: String)
@@ -60,16 +61,19 @@ class CityListAdapter(
             iconFavorite.setOnClickListener {
                 listener.onFavoriteClicked(item)
                 lastFavoritePosition = holder.adapterPosition
+                lastFavoriteId = item.id
             }
-            if (position == 0 && item.isFavorite != 0)
+            if (position == 0 && item.isFavorite != 0) {
                 textFavorites.visibility = View.VISIBLE
-            else
+                textOtherCities.visibility = View.GONE
+            } else
                 textFavorites.visibility = View.GONE
 
             if (position > 0)
-                if (item.isFavorite == 0 && items[position - 1].isFavorite != 0)
+                if (item.isFavorite == 0 && items[position - 1].isFavorite != 0) {
                     textOtherCities.visibility = View.VISIBLE
-                else
+                    textFavorites.visibility = View.GONE
+                } else
                     textOtherCities.visibility = View.GONE
         }
     }
@@ -77,17 +81,56 @@ class CityListAdapter(
     override fun getItemCount(): Int = items.size
 
     fun renderItems(items: List<WeatherShortData>) {
-        val diffUtilCallBack = WeatherShortDataDiffUtil(this.items, items)
+        val oldItems = this.items
+        val diffUtilCallBack = WeatherShortDataDiffUtil(oldItems, items)
         val result = DiffUtil.calculateDiff(diffUtilCallBack)
         this.items = items
         result.dispatchUpdatesTo(this)
 
         //Need to add smarter logic
         lastFavoritePosition?.let {
-            if (it < items.size - 1)
-                notifyItemRangeChanged(0, items.size)
+            calcUpdates(it, lastFavoriteId!!, items)
             lastFavoritePosition = null
         }
+    }
+
+    private fun calcUpdates(
+        lastFavoritePosition: Int,
+        lastFavoriteId: Int,
+        items: List<WeatherShortData>,
+    ) {
+        val updateList = HashSet<Int>()
+        if (lastFavoritePosition == 0 && items.size > 1) {
+            notifyItemChanged(1)
+            updateList.add(1)
+        } else if (lastFavoritePosition > 0 && items.size - 1 > lastFavoritePosition) {
+            notifyItemChanged(lastFavoritePosition - 1)
+            notifyItemChanged(lastFavoritePosition + 1)
+            updateList.add(lastFavoritePosition - 1)
+            updateList.add(lastFavoritePosition + 1)
+        } else if (lastFavoritePosition == items.size - 1 && items.size > 1) {
+            notifyItemChanged(lastFavoritePosition - 1)
+            updateList.add(lastFavoritePosition - 1)
+        }
+
+        var newFavoritePosition = 0
+        items.indices.forEach {
+            if (items[it].id == lastFavoriteId)
+                newFavoritePosition = it
+        }
+
+        if (newFavoritePosition == 0 && items.size > 1) {
+            if (!updateList.contains(1))
+                notifyItemChanged(1)
+        } else if (newFavoritePosition > 0 && items.size - 1 > newFavoritePosition) {
+            if (!updateList.contains(newFavoritePosition - 1))
+                notifyItemChanged(newFavoritePosition - 1)
+            if (!updateList.contains(newFavoritePosition + 1))
+                notifyItemChanged(newFavoritePosition + 1)
+        } else if (newFavoritePosition == items.size - 1 && items.size > 1)
+            if (!updateList.contains(newFavoritePosition - 1))
+                notifyItemChanged(newFavoritePosition - 1)
+        notifyItemChanged(0)
     }
 
     class Holder(val binding: ItemCityBinding) : RecyclerView.ViewHolder(binding.root)
