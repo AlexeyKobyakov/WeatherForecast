@@ -12,12 +12,15 @@ import com.alexeykov.weather.model.cloud.WeatherRepository
 import com.alexeykov.weather.model.data.CloudToLocalData
 import com.alexeykov.weather.model.data.WeatherShortData
 import com.alexeykov.weather.model.room.CitiesRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainViewModel(
+@HiltViewModel
+class MainViewModel @Inject constructor(
     private val localRepository: CitiesRepository,
     private val cloudRepository: WeatherRepository,
 ) : ViewModel(), CityListAdapter.Listener {
@@ -50,8 +53,10 @@ class MainViewModel(
 
     fun getForecast() {
         _update.postValue(true)
+
         job.launch {
             val citiesList = localRepository.getShortData()
+
             citiesList.forEach { weatherShortData ->
                 try {
                     val forecast = cloudRepository.getWeatherInCity(weatherShortData.cityName)
@@ -62,6 +67,7 @@ class MainViewModel(
                             isFavorite = weatherShortData.isFavorite,
                             cityWeather = it
                         )
+
                         localRepository.updateWeather(weather)
                     }
                 } catch (e: NoNetworkConnection) {
@@ -86,6 +92,7 @@ class MainViewModel(
 
     override fun onItemClicked(cityName: String) {
         val bundle = Bundle().apply { putString("city", cityName) }
+
         navController?.navigate(R.id.action_MainFragment_to_DetailsFragment, bundle)
     }
 
@@ -96,6 +103,7 @@ class MainViewModel(
     fun deleteCity(cityName: String) {
         job.launch {
             localRepository.deleteCity(cityName)
+
             _delete.postValue("")
         }
     }
@@ -103,6 +111,7 @@ class MainViewModel(
     override fun onFavoriteClicked(item: WeatherShortData) {
         job.launch {
             val isFavorite = if (item.isFavorite == 0) 1 else 0
+
             localRepository.changeFavorite(item.cityName, isFavorite)
         }
     }

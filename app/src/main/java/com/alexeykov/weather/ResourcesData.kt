@@ -1,36 +1,15 @@
 package com.alexeykov.weather
 
 import android.content.Context
-import androidx.room.Room
-import com.alexeykov.weather.model.cloud.ApiFactory
-import com.alexeykov.weather.model.cloud.WeatherRepository
-import com.alexeykov.weather.model.room.AppDatabase
-import com.alexeykov.weather.model.room.CitiesRepository
-import com.alexeykov.weather.model.room.cities.RoomCitiesRepository
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import java.util.LinkedHashMap
 
-object Repositories {
+object ResourcesData {
 
     private lateinit var appContext: Context
 
     fun init(context: Context) {
         appContext = context
     }
-
-    private val database: AppDatabase by lazy {
-        Room.databaseBuilder(appContext, AppDatabase::class.java, "database.db").build()
-    }
-
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
-
-    val localRepository: CitiesRepository by lazy {
-        RoomCitiesRepository(citiesDao = database.getCitiesDao(), ioDispatcher = ioDispatcher)
-    }
-
-    val cloudRepository: WeatherRepository =
-        WeatherRepository(api = ApiFactory.weatherApi, ioDispatcher = ioDispatcher)
 
     val weather: LinkedHashMap<String, String> by lazy {
         getWeatherMap()
@@ -40,27 +19,28 @@ object Repositories {
         getIconsMap()
     }
 
-    val wind: ArrayList<String> by lazy {
-        appContext.resources.getStringArray(R.array.winds).toCollection(ArrayList())
-    }
-
     private fun getIconsMap(): LinkedHashMap<String, String> {
         val iconsArray = appContext.resources.getStringArray(R.array.icons_array)
         val linkedHashMap: LinkedHashMap<String, String> = LinkedHashMap(iconsArray.size - 1)
+
         iconsArray.forEach {
             val str: List<String> = it.split("|")
             linkedHashMap[str[0]] = str[1]
         }
+
         return linkedHashMap
     }
 
     private fun getWeatherMap(): LinkedHashMap<String, String> {
         val arrayKeys = appContext.resources.getStringArray(R.array.weather_keys)
         val arrayValues = appContext.resources.getStringArray(R.array.weather_values)
+
         val linkedHashMap: LinkedHashMap<String, String> = LinkedHashMap(arrayKeys.size)
-        arrayKeys.indices.forEach {
-            linkedHashMap[arrayKeys[it]] = arrayValues[it]
+
+        for (i in arrayKeys.indices) {
+            linkedHashMap[arrayKeys[i]] = arrayValues[i]
         }
+
         return linkedHashMap
     }
 }

@@ -14,7 +14,9 @@ import androidx.appcompat.content.res.AppCompatResources
 import com.alexeykov.weather.R
 import com.alexeykov.weather.WeatherApp
 import com.alexeykov.weather.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -40,10 +42,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         val mode = sPref.getInt(WeatherApp.THEME, AppCompatDelegate.MODE_NIGHT_NO)
+
         if (mode == AppCompatDelegate.MODE_NIGHT_YES)
             menu.getItem(0).icon = AppCompatResources.getDrawable(this, R.drawable.ic_light_mode)
         else
             menu.getItem(0).icon = AppCompatResources.getDrawable(this, R.drawable.ic_dark_mode)
+
         return true
     }
 
@@ -51,6 +55,7 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.action_settings -> {
                 val mode = AppCompatDelegate.getDefaultNightMode()
+
                 if (mode == AppCompatDelegate.MODE_NIGHT_YES) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                     sPref.edit().putInt(WeatherApp.THEME, AppCompatDelegate.MODE_NIGHT_NO).apply()
@@ -60,6 +65,7 @@ class MainActivity : AppCompatActivity() {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                     recreate()
                 }
+
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -68,6 +74,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
+
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }

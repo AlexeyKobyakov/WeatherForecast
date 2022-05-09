@@ -7,26 +7,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alexeykov.weather.R
-import com.alexeykov.weather.Repositories
 import com.alexeykov.weather.adapters.CityListAdapter
 import com.alexeykov.weather.databinding.FragmentMainBinding
 import com.alexeykov.weather.viewmodels.MainViewModel
-import com.alexeykov.weather.viewmodels.viewModelCreator
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding ?: throw RuntimeException("FragmentMainBinding is null")
 
-    private val mainViewModel: MainViewModel by viewModelCreator {
-        MainViewModel(
-            Repositories.localRepository,
-            Repositories.cloudRepository
-        )
-    }
+    private val mainViewModel: MainViewModel by viewModels()
 
     private lateinit var adapter: CityListAdapter
 
@@ -82,6 +78,7 @@ class MainFragment : Fragment() {
 
         mainViewModel.errors.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+
             binding.pullToRefresh.isRefreshing = false
         }
 

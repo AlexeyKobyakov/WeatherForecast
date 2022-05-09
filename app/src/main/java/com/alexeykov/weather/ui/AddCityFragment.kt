@@ -6,22 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.alexeykov.weather.Repositories
 import com.alexeykov.weather.databinding.FragmentAddCityBinding
 import com.alexeykov.weather.viewmodels.AddCityViewModel
-import com.alexeykov.weather.viewmodels.viewModelCreator
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddCityFragment : Fragment() {
     private var _binding: FragmentAddCityBinding? = null
     private val binding get() = _binding ?: throw RuntimeException("FragmentAddCityBinding is null")
 
-    private val addCityViewModel: AddCityViewModel by viewModelCreator {
-        AddCityViewModel(
-            Repositories.localRepository,
-            Repositories.cloudRepository,
-            findNavController())
-    }
+    private val addCityViewModel: AddCityViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,6 +39,8 @@ class AddCityFragment : Fragment() {
         addCityViewModel.errors.observe(requireActivity()) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
         }
+
+        addCityViewModel.setNavController(findNavController())
 
     }
 

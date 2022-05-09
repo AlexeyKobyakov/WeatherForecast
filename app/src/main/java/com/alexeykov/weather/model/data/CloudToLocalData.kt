@@ -1,6 +1,6 @@
 package com.alexeykov.weather.model.data
 
-import com.alexeykov.weather.Repositories
+import com.alexeykov.weather.ResourcesData
 
 object CloudToLocalData {
 
@@ -16,8 +16,8 @@ object CloudToLocalData {
             pressure = cityWeather.main.pressure,
             humidity = cityWeather.getHumidity(),
             visibility = cityWeather.getSign(),
-            weather = Repositories.weather[cityWeather.getWeatherId()]!!,
-            iconLink = Repositories.iconsLink[cityWeather.getWeatherIconId()]!!,
+            weather = ResourcesData.weather[cityWeather.getWeatherId()]!!,
+            iconLink = ResourcesData.iconsLink[cityWeather.getWeatherIconId()]!!,
             windSpeed = cityWeather.wind.speed,
             windDeg = cityWeather.wind.deg
         )

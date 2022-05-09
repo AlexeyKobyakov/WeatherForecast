@@ -11,15 +11,20 @@ import com.alexeykov.weather.model.NoNetworkConnection
 import com.alexeykov.weather.model.StorageException
 import com.alexeykov.weather.model.cloud.WeatherRepository
 import com.alexeykov.weather.model.room.CitiesRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class AddCityViewModel(
+@HiltViewModel
+class AddCityViewModel @Inject constructor(
     private val localRepository: CitiesRepository,
     private val cloudRepository: WeatherRepository,
-    private val navController: NavController,
+//    private val navController: NavController,
 ) : ViewModel() {
+
+    private var navController: NavController? = null
 
     private val job: CoroutineScope = CoroutineScope(Dispatchers.IO)
 
@@ -36,21 +41,31 @@ class AddCityViewModel(
         }
     }
 
+    fun setNavController(navController: NavController) {
+        this.navController = navController
+    }
+
     private suspend fun saveCity(cityName: String) {
         try {
             val cityWeather = cloudRepository.getWeatherInCity(cityName)
+
             Log.d("AddCityViewModel", cityWeather.toString())
+
             cityWeather?.let {
                 localRepository.addCity(weatherData = CloudToLocalData.getWeatherData(
                     cityId = 0,
                     cityName = cityName,
                     isFavorite = 0,
                     cityWeather = it))
+
                 Log.d("AddCityViewModel", it.toString())
+
                 CoroutineScope(Dispatchers.Main).launch {
-                    navController.navigate(R.id.action_AddCityFragment_pop)
+                    navController?.navigate(R.id.action_AddCityFragment_pop)
                 }
+
             } ?: _errors.postValue(R.string.error_load_data)
+
         } catch (e: NoNetworkConnection) {
             _errors.postValue(R.string.error_no_internet)
         }
